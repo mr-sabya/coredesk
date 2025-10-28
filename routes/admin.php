@@ -18,10 +18,13 @@ Route::get('/login', [App\Http\Controllers\Backend\AuthController::class, 'showL
 
 Route::middleware(['is_super_admin'])->group(function () {
     Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('bashboard');
-
+    
     Route::get('/users', function () {
         return view('backend.users.index');
     })->name('user.index');
-
+    
     // Add other super-admin specific features here
+    // tenant
+    Route::get('/tenant', [App\Http\Controllers\Backend\TenantController::class, 'index'])->name('tenant.index');
+    Route::get('/tenant/create', [App\Http\Controllers\Backend\TenantController::class, 'create'])->name('tenant.create');
 });
