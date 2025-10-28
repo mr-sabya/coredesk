@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->boolean('is_super_admin')->default(false); // Add this column
+            $table->string('role')->default('user'); // e.g., 'admin', 'editor', 'viewer'
             $table->timestamps();
         });
 
