@@ -14,17 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/login', [App\Http\Controllers\Backend\AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [App\Http\Controllers\Core\Backend\AuthController::class, 'showLoginForm'])->name('login');
 
 Route::middleware(['is_super_admin'])->group(function () {
-    Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('bashboard');
+    Route::get('/', [App\Http\Controllers\Core\Backend\HomeController::class, 'index'])->name('bashboard');
     
     Route::get('/users', function () {
-        return view('backend.users.index');
+        return view('core.backend.users.index');
     })->name('user.index');
     
     // Add other super-admin specific features here
     // tenant
-    Route::get('/tenant', [App\Http\Controllers\Backend\TenantController::class, 'index'])->name('tenant.index');
-    Route::get('/tenant/create', [App\Http\Controllers\Backend\TenantController::class, 'create'])->name('tenant.create');
+    Route::get('/tenant', [App\Http\Controllers\Core\Backend\TenantController::class, 'index'])->name('tenant.index');
+    Route::get('/tenant/create', [App\Http\Controllers\Core\Backend\TenantController::class, 'create'])->name('tenant.create');
+    
+    
+    // plans
+    Route::get('/plans', [App\Http\Controllers\Core\Backend\PlanController::class, 'index'])->name('plan.index');
+    Route::get('/plans/create', [App\Http\Controllers\Core\Backend\PlanController::class, 'create'])->name('plan.create');
 });
