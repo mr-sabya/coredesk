@@ -37,7 +37,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-gray-900" href="{{ route('home') }}" wire:navigate>
+                            <a class="nav-link text-gray-900" href="{{ route('pages.pricing') }}" wire:navigate>
                                 Pricing
                             </a>
                         </li>
@@ -45,7 +45,11 @@
 
 
                         <!-- Other Menu Items -->
-                        <li class="nav-item"><a class="nav-link text-gray-900" href="service.html">Service</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-900" href="{{ route('pages.service')}}" wire:navigate>
+                                Service
+                            </a>
+                        </li>
                         <li class="nav-item"><a class="nav-link text-gray-900" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link text-gray-900" href="contact.html">Contact</a></li>
 

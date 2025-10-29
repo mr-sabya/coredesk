@@ -75,7 +75,7 @@
     </div>
 
     <!-- loader js -->
-    <script data-navigate-once src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
     @livewireScripts
 
 </html>
