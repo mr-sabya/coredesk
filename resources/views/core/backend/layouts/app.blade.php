@@ -140,18 +140,20 @@
     @livewireScripts
 
     <script>
-        // Global listener for toast events from Livewire
-        window.addEventListener('show-toast', event => {
-            Toastify({
-                text: event.detail[0].message,
-                duration: 3000,
-                close: true,
-                gravity: "top", // top or bottom
-                position: "right", // left, center or right
-                style: {
-                    background: event.detail[0].type === 'success' ? "#4CAF50" : event.detail[0].type === 'error' ? "#F44336" : "#333"
-                },
-            }).showToast();
+        document.addEventListener('livewire:init', () => {
+            // Global listener for toast events from Livewire
+            window.addEventListener('show-toast', event => {
+                Toastify({
+                    text: event.detail[0].message,
+                    duration: 3000,
+                    close: true,
+                    gravity: "top", // top or bottom
+                    position: "right", // left, center or right
+                    style: {
+                        background: event.detail[0].type === 'success' ? "#4CAF50" : event.detail[0].type === 'error' ? "#F44336" : "#333"
+                    },
+                }).showToast();
+            });
         });
     </script>
 </body>

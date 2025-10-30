@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+            // Who owns the subscription
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade'); // If user is deleted, remove subscription
+
             $table->char('tenant_id', 36);
             // Link to the central 'tenants' table (each tenant is a company)
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');

@@ -1,31 +1,47 @@
 <div>
-    @if(Route::is('home'))
-    <!-- preloader -->
+    @if (Route::is('home'))
+    <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="loading-container">
             <div class="loading"></div>
         </div>
     </div>
-    <!-- preloader -->
+    <!-- /Preloader -->
 
     <script>
         document.addEventListener("livewire:navigated", function() {
-            // console.log('ok');
+            // Find preloader safely
             const preloader = document.getElementById('preloader');
+            if (!preloader) return; // Exit if not found
 
-            // Check if preloader was already shown
+            // Run only once per browser session
             if (!localStorage.getItem('preloaderShown')) {
                 preloader.style.display = 'block'; // Show preloader
 
-                // Hide preloader after some time (example: 2 seconds)
                 setTimeout(() => {
                     preloader.style.display = 'none';
+                    // Mark as shown after hiding
+                    localStorage.setItem('preloaderShown', 'true');
                 }, 2000);
-
-                // Mark preloader as shown
-                localStorage.setItem('preloaderShown', 'true');
             } else {
-                preloader.style.display = 'none'; // Hide if already shown
+                preloader.style.display = 'none';
+            }
+        });
+
+        // Also handle the first page load
+        document.addEventListener("DOMContentLoaded", function() {
+            const preloader = document.getElementById('preloader');
+            if (!preloader) return;
+
+            if (!localStorage.getItem('preloaderShown')) {
+                preloader.style.display = 'block';
+
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    localStorage.setItem('preloaderShown', 'true');
+                }, 2000);
+            } else {
+                preloader.style.display = 'none';
             }
         });
     </script>

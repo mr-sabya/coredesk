@@ -19,4 +19,16 @@ class PageController extends Controller
     {
         return view('core.frontend.pricing.index');
     }
+
+    // anout Page
+    public function aboutPage()
+    {
+        return view('core.frontend.about.index');    
+    }
+    
+    // contact page
+    public function contactPage()
+    {
+        return view('core.frontend.contact.index');        
+    }
 }

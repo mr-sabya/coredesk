@@ -18,4 +18,12 @@ class PlanController extends Controller
     {
         return view('core.backend.plan.create');    
     }
+
+    // edit 
+    public function edit($id)
+    {
+        return view('core.backend.plan.edit', [
+            'planId' => $id,
+        ]);    
+    }
 }

@@ -11,18 +11,18 @@
     <meta name="keywords" content="html, css, bootstrap, admin template, dashboard, saas, software, responsive">
     <meta name="author" content="Your Name or Company">
     <meta name="theme-color" content="#ffffff"><!-- Font -->
-    <link rel="preload" href="{{ asset('assets/frontend/fonts/Sora-400.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('assets/frontend/fonts/Sora-500.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('assets/frontend/fonts/Sora-600.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('assets/frontend/css/main.css') }}" as="style"><!-- MAIN CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}"><!-- Splide slider css -->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/splideslider.css') }}">
-    
+
+
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
+    <!-- Splide slider css -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/splide.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/aos.css') }}">
+
     @livewireStyles
 </head>
 
 <body>
-    
+
     <livewire:core.frontend.theme.preloader />
 
     <!-- main wrapper -->
@@ -75,6 +75,17 @@
     </div>
 
     <!-- loader js -->
+    <script data-navigate-once src="{{ asset('assets/frontend/js/jquery-3.7.1.min.js') }}"></script>
+    <!-- Popper.js (v2) -->
+    <script data-navigate-once src="{{ asset('assets/frontend/js/popper.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/glightbox.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/splide.min.js') }}"></script>
+    <!-- AutoScroll Extension -->
+    <script data-navigate-once src="{{ asset('assets/frontend/js/splide-extension-auto-scroll.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/aos.js') }}"></script>
+
+
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
     @livewireScripts
 

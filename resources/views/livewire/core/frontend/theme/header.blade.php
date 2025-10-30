@@ -50,8 +50,16 @@
                                 Service
                             </a>
                         </li>
-                        <li class="nav-item"><a class="nav-link text-gray-900" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link text-gray-900" href="contact.html">Contact</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-900" href="{{ route('pages.about')}}" wire:navigate>
+                                About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-900" href="{{ route('pages.contact')}}" wire:navigate>
+                                Contact
+                            </a>
+                        </li>
 
                     </ul>
 
@@ -96,7 +104,11 @@
                     </button>
 
                     <!-- Register Button (Desktop) -->
+                    @guest
                     <a href="{{ route('register') }}" wire:navigate class="btn bg-deepblue text-white fw-500 btn-md rounded-2 px-4 ms-2 d-none d-md-flex">Register</a>
+                    @else
+                    <livewire:core.frontend.components.user-menu />
+                    @endguest
 
                     <!-- Mobile Menu Trigger -->
                     <button aria-label="menu" class="mobile-menu-trigger btn btn-outline px-0 text-gray-700 d-flex d-lg-none">

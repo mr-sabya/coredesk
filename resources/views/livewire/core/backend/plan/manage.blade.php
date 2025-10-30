@@ -42,12 +42,17 @@
 
                         {{-- Price and Currency --}}
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="planPrice" class="form-label">Price <span class="text-danger">*</span></label>
+                            <div class="col-md-4">
+                                <label for="planPrice" class="form-label">Monthly Price <span class="text-danger">*</span></label>
                                 <input type="number" step="0.01" class="form-control" id="planPrice" placeholder="e.g., 9.99" wire:model.defer="price">
                                 @error('price') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label for="annualPrice" class="form-label">Annual Price <span class="text-danger">*</span></label>
+                                <input type="number" step="0.01" class="form-control" id="annualPrice" placeholder="e.g., 9.99" wire:model.defer="annual_price">
+                                @error('annual_price') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="col-md-4">
                                 <label for="planCurrency" class="form-label">Currency <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="planCurrency" placeholder="e.g., USD, EUR" wire:model.defer="currency">
                                 @error('currency') <span class="text-danger">{{ $message }}</span> @enderror

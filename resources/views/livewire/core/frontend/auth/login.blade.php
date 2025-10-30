@@ -20,35 +20,46 @@
                     </div>
 
                     <!-- Form -->
-                    <form>
+                    <form wire:submit.prevent="authenticate">
                         <!-- Email -->
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" placeholder="name@example.com" id="floatingemail">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="name@example.com" id="floatingemail" wire:model.blur="email" autocomplete="email" autofocus>
                             <label for="floatingemail" class="form-label">Email address</label>
+                            @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
 
                         <!-- Password -->
                         <div class="form-floating mb-3 position-relative">
-                            <input type="password" class="form-control" placeholder="name@example.com" id="floatingpassword">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" id="floatingpassword" wire:model.blur="password" autocomplete="current-password">
                             <label for="floatingpassword" class="form-label">Password</label>
                             <div class="position-absolute translate-middle-y top-50 me-3 end-0">
                                 <i data-feather="eye" class="w-5 h-5 text-gray-500"></i>
                             </div>
+                            @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
 
-                        <!-- Terms & Conditions -->
+                        <!-- Remember Me -->
                         <div class="form-check d-block">
-                            <input type="checkbox" class="form-check-input position-relative" id="customCheck11">
-                            <label class="form-check-label text-gray-500 text-start lh-22 mb-0 fs-15 fw-500" for="customCheck11">
-                                By clicking all term and condition apply out
-                                <a href="#" class="link text-gray-900">Privacy policy</a> and
-                                <a href="#" class="link text-gray-900">Term and Conditions.</a>
+                            <input type="checkbox" class="form-check-input position-relative" id="remember" wire:model="remember">
+                            <label class="form-check-label text-gray-500 text-start lh-22 mb-0 fs-15 fw-500" for="remember">
+                                Remember me
                             </label>
                         </div>
 
                         <!-- Submit Button -->
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-info bg-gradient btn-lg mb-2 w-100">Register</button>
+                            <button type="submit" class="btn btn-info bg-gradient btn-lg mb-2 w-100" wire:loading.attr="disabled">
+                                <span wire:loading.remove wire:target="authenticate">Login</span>
+                                <span wire:loading wire:target="authenticate">Logging in...</span>
+                            </button>
                         </div>
                     </form>
 

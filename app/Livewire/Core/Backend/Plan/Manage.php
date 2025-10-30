@@ -13,6 +13,7 @@ class Manage extends Component
     public string $slug = '';
     public ?string $description = null;
     public string $price = '0.00'; // Default to a string to handle decimal input
+    public string $annual_price = '0.00'; // Default to a string to handle decimal input
     public string $currency = 'USD'; // Default currency
     public array $features = ['']; // Array to hold multiple features, initialized with one empty string
     public ?string $stripe_price_id = null;
@@ -27,6 +28,7 @@ class Manage extends Component
         'slug' => 'required|string|min:3|max:255|unique:plans,slug',
         'description' => 'nullable|string|max:1000',
         'price' => 'required|numeric|min:0',
+        'annual_price' => 'required|numeric|min:0',
         'currency' => 'required|string|size:3',
         'features' => 'nullable|array',
         'features.*' => 'nullable|string|max:255', // Each feature can be nullable and string
@@ -48,6 +50,7 @@ class Manage extends Component
             $this->slug = $this->plan->slug;
             $this->description = $this->plan->description;
             $this->price = (string) $this->plan->price; // Cast decimal to string for input
+            $this->annual_price = (string) $this->plan->annual_price; // Cast decimal to string for input
             $this->currency = $this->plan->currency;
             $this->features = $this->plan->features ?? ['']; // Ensure it's an array, add empty if null
             $this->stripe_price_id = $this->plan->stripe_price_id;
@@ -112,6 +115,7 @@ class Manage extends Component
             'slug' => $this->slug,
             'description' => $this->description,
             'price' => (float) $this->price, // Cast back to float for database
+            'annual_price' => (float) $this->annual_price, // Cast back to float for database
             'currency' => $this->currency,
             'features' => $this->features,
             'stripe_price_id' => $this->stripe_price_id,
@@ -130,6 +134,7 @@ class Manage extends Component
             'slug' => $this->slug,
             'description' => $this->description,
             'price' => (float) $this->price,
+            'annual_price' => (float) $this->annual_price,
             'currency' => $this->currency,
             'features' => $this->features,
             'stripe_price_id' => $this->stripe_price_id,

@@ -112,7 +112,7 @@
                                     <td>{{ $plan->sort_order }}</td>
                                     <td>
                                         <div class="d-flex gap-2">
-                                            <a href="{{ route('super-admin.plans.edit', $plan->id) }}" class="btn btn-sm btn-primary edit-item-btn" wire:navigate>Edit</a>
+                                            <a href="{{ route('admin.plan.edit', $plan->id) }}" class="btn btn-sm btn-primary edit-item-btn" wire:navigate>Edit</a>
                                             {{-- Individual Delete Button: Uses data-bs-toggle/target --}}
                                             <button type="button"
                                                 class="btn btn-sm btn-danger remove-item-btn"

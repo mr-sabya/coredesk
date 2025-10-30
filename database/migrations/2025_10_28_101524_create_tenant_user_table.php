@@ -6,31 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::table('tenant_user', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            // Ensure tenant_id matches the type of tenants.id (char(36) or uuid)
-            $table->char('tenant_id', 36); // Or $table->uuid('tenant_id')
-            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
-            $table->string('role')->default('member'); // e.g., 'owner', 'admin', 'member', 'billing'
-            $table->timestamps();
-
-            // Prevent duplicate entries for the same user in the same tenant
-            $table->unique(['user_id', 'tenant_id']);
-        });
+        if (!Schema::hasTable('tenant_user')) {
+            Schema::create('tenant_user', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+                $table->char('tenant_id', 36);
+                $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
+                $table->string('role')->default('member');
+                $table->timestamps();
+                $table->unique(['user_id', 'tenant_id']);
+            });
+        }
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::table('tenant_user', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('tenant_user');
     }
 };

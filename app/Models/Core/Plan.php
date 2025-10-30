@@ -14,6 +14,7 @@ class Plan extends Model
         'slug',
         'description',
         'price',
+        'annual_price',
         'currency',
         'features',
         'stripe_price_id',

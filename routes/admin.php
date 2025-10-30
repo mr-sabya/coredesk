@@ -32,4 +32,5 @@ Route::middleware(['is_super_admin'])->group(function () {
     // plans
     Route::get('/plans', [App\Http\Controllers\Core\Backend\PlanController::class, 'index'])->name('plan.index');
     Route::get('/plans/create', [App\Http\Controllers\Core\Backend\PlanController::class, 'create'])->name('plan.create');
+    Route::get('/plans/{id}/edit', [App\Http\Controllers\Core\Backend\PlanController::class, 'edit'])->name('plan.edit');
 });
