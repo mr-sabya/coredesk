@@ -33,4 +33,7 @@ Route::middleware(['is_super_admin'])->group(function () {
     Route::get('/plans', [App\Http\Controllers\Core\Backend\PlanController::class, 'index'])->name('plan.index');
     Route::get('/plans/create', [App\Http\Controllers\Core\Backend\PlanController::class, 'create'])->name('plan.create');
     Route::get('/plans/{id}/edit', [App\Http\Controllers\Core\Backend\PlanController::class, 'edit'])->name('plan.edit');
+
+    // banner
+    Route::get('/banner-management', [App\Http\Controllers\Core\Backend\WebsiteController::class, 'bananerManagement'])->name('website.banner');
 });

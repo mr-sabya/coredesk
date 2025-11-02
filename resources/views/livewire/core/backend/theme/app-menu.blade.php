@@ -89,6 +89,28 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Route::is('admin.website.*') ? 'collapsed active' : '' }}" href="#websiteManagement" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-website">Website</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ Route::is('admin.website.*') ? 'show' : '' }}" id="websiteManagement">
+                        <ul class="nav nav-sm flex-column">
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.website.banner') }}" wire:navigate class="nav-link {{ Route::is('admin.website.banner') ? 'active' : '' }}">
+                                    <span data-key="t-plan"> Banner </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="apps-file-manager.html" class="nav-link">
+                                    <span data-key="t-subscriptions"> Subscriptions</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
 
 
 
